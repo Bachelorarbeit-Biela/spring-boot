@@ -8,19 +8,14 @@ import java.util.UUID;
 @Entity(name = "DrugIntake")
 @Table(name = "drugintake")
 public class DrugIntake {
-    public DrugIntake() {
-
-    }
     public enum Drug {
         IBU, TRIPTAN, PARACETAMOL
     }
-
     public enum AmountEntity {
         GRAMS, PIECE
     }
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-
     private UUID id;
     @Column(name = "drug")
     private Drug drug;
@@ -34,9 +29,12 @@ public class DrugIntake {
     private LocalDateTime creationTimestamp;
     @Column(name = "modificationTimestamp")
     private LocalDateTime modificationTimestamp;
-    @ManyToOne(cascade = {CascadeType.MERGE})//Hier stand vorher Persist
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "migraineId")
     private Migraine migraine;
+
+    public DrugIntake() {
+    }
 
     public DrugIntake(Drug drug, AmountEntity amountEntity, BigDecimal amount,
                       LocalDateTime takeTimestamp, LocalDateTime creationTimestamp,

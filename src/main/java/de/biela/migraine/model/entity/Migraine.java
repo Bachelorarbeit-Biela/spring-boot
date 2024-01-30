@@ -9,31 +9,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 @Entity(name = "Migraine")
-@Table(name = "migraine"
-)
+@Table(name = "migraine")
 public class Migraine {
-
-
     public enum PainSeverity {
         WEAK, MEDIUM, STRONG
     }
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-
     private UUID id;
     @Column(name = "date"    )
     private LocalDate date;
     @Column(name = "description"    )
     private String description;
-    @Column(name = "pain_severity"    )
+    @Column(name = "painSeverity"    )
     public PainSeverity painSeverity;
+
     @Column(name = "creation_timestamp",
             nullable = false)
     private LocalDateTime creationTimestamp;
     @Column(name = "modification_timestamp"    )
     private LocalDateTime modificationTimestamp;
     @OneToMany(mappedBy = "migraine",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
-
     private List<DrugIntake> drugIntakeList;
 
     public Migraine(){

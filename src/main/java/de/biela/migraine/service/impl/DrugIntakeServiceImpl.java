@@ -67,7 +67,6 @@ public class DrugIntakeServiceImpl implements DrugIntakeService {
         }
 
     }
-
     @Override
     public String deleteDrugIntakeById(UUID id) {
             drugIntakeRepository.deleteById(id);

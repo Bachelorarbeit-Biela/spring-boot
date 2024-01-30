@@ -11,18 +11,18 @@ import java.util.UUID;
 @RequestMapping(value = "/migraine")
 public class MigraineController {
     private final MigraineService migraineService;
-
     public MigraineController(MigraineService migraineService) {
         this.migraineService = migraineService;
     }
-
     @GetMapping(value = "/{id}")
     public ResponseEntity<MigraineDto> getMigraineById(@PathVariable(value = "id") final String id) {
         return ResponseEntity.ok(migraineService.getMigraineById(UUID.fromString(id)));
     }
 
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<MigraineDto> updateMigraineById(@PathVariable(value = "id") final String id, @RequestBody MigraineDto updatedMigraine) {
+    public ResponseEntity<MigraineDto> updateMigraineById(@PathVariable(value = "id") final String id,
+                                                          @RequestBody MigraineDto updatedMigraine)
+    {
         return ResponseEntity.ok(migraineService.updateMigraineById(UUID.fromString(id), updatedMigraine));
     }
 

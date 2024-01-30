@@ -22,7 +22,7 @@ public class DrugIntakeControllerIT {
         uuid = UUID.randomUUID();
         baseURI = "http://localhost:8080/drugIntake";
         Migraine migraine = new Migraine(LocalDate.now(),"test", Migraine.PainSeverity.WEAK, LocalDateTime.now().withNano(0),LocalDateTime.now().withNano(0));
-        migraine.setId(UUID.fromString("d2028fbc-f96c-4844-b6fa-66abcdfc3072"));
+        migraine.setId(UUID.fromString("c3cd356c-2dc0-44d2-9c2a-3f40b985e245"));
         drugIntakeDto = new DrugIntakeDto(uuid, DrugIntake.Drug.PARACETAMOL, DrugIntake.AmountEntity.PIECE, BigDecimal.ONE, LocalDateTime.now().withNano(0),LocalDateTime.now().withNano(0),LocalDateTime.now().withNano(0),migraine);
     }
     @Order(1)

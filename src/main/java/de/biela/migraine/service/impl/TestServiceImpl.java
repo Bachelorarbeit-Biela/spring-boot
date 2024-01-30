@@ -4,21 +4,21 @@ import de.biela.migraine.model.dto.MigraineDto;
 import de.biela.migraine.model.entity.Migraine;
 import de.biela.migraine.repository.MigraineRepository;
 import de.biela.migraine.service.MigraineService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
-
-
-public class MigraineServiceImpl implements MigraineService {
+@Service
+public class TestServiceImpl implements MigraineService {
     private final MigraineRepository migraineRepository;
-    public MigraineServiceImpl(MigraineRepository migraineRepository) {
+    public TestServiceImpl(MigraineRepository migraineRepository) {
         this.migraineRepository = migraineRepository;
     }
     @Override
     public MigraineDto getMigraineById(final UUID id) {
-            Optional <Migraine> migraine = migraineRepository.findById(id);
-            return migraine.map(mig -> new MigraineDto(mig.getId(),mig.getDate(),mig.getDescription(),mig.getPainSeverity(),mig.getCreationTimestamp(),mig.getModificationTimestamp(),null)).orElse(null);
+        Optional <Migraine> migraine = migraineRepository.findById(id);
+        return migraine.map(mig -> new MigraineDto(mig.getId(),mig.getDate(),mig.getDescription(),mig.getPainSeverity(),mig.getCreationTimestamp(),mig.getModificationTimestamp(),null)).orElse(null);
     }
     @Override
     public MigraineDto updateMigraineById(final UUID id, final MigraineDto updatedMigraine){
@@ -62,8 +62,8 @@ public class MigraineServiceImpl implements MigraineService {
     @Override
     public String deleteMigraineById(UUID id) {
 
-            migraineRepository.deleteById(id);
-            return "Migräne wurde gelöscht";
+        migraineRepository.deleteById(id);
+        return "Migräne wurde gelöscht";
     }
 
 
